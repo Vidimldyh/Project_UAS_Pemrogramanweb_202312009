@@ -116,12 +116,6 @@ http://localhost/azta_ice_cream/index.php
 - 🎥 Video Demo (YouTube): https://youtu.be/link_video
 
 ---
- ## Akun Default
-| Role      | Username         | Password |
-| --------- | ---------------- | -------- |
-| Admin     | [admin@azta.com] | admin123 |
-| Pelanggan | [user@azta.com]  | user123  |
-
 
 ## 👥 Fitur Detail Per Role
 
