@@ -91,8 +91,11 @@ git clone https://github.com/Vidimldyh/Project_UAS_Pemrogramanweb_202312009.git
 ```
 
 3. **Konfigurasi koneksi database**
+```bash
 - Edit file: `config/koneksi.php`
 - Sesuaikan:
+```
+
 ```php
 $host = "localhost";
 $user = "root";
@@ -113,6 +116,12 @@ http://localhost/azta_ice_cream/index.php
 - 🎥 Video Demo (YouTube): https://youtu.be/link_video
 
 ---
+ ## Akun Default
+| Role      | Username         | Password |
+| --------- | ---------------- | -------- |
+| Admin     | [admin@azta.com] | admin123 |
+| Pelanggan | [user@azta.com]  | user123  |
+
 
 ## 👥 Fitur Detail Per Role
 
