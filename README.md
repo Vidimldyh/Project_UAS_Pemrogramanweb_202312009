@@ -80,7 +80,7 @@ AZTAICE_CREAM/
 
 1. **Clone repositori**
 ```bash
-git clone https://github.com/username/azta-ice-cream.git
+git clone https://github.com/Vidimldyh/Project_UAS_Pemrogramanweb_202312009.git
 ```
 
 2. **Import database**
@@ -132,148 +132,149 @@ http://localhost/azta_ice_cream/index.php
 ```
 
 ---
-
-## 🎓 Identitas Mahasiswa
-
-```yaml
-Nama    : Vidi Maulidiyah Sari
-NIM     : 202312XXX
-Proyek  : UAS Pemrograman Web
-Kelas   : Teknik Informatika – Pagi
-Dosen   : Turahyo, ST., M.Eng.
-```
 # 🗃 Struktur Database & Relasi Tabel — Azta Es Cream
 
-Database aplikasi **Azta Es Cream** dirancang untuk mendukung sistem pemesanan es krim berbasis web. Sistem mencakup manajemen produk, keranjang belanja, transaksi, pengiriman, pembayaran, dan testimoni.
+Database aplikasi **Azta Es Cream** mendukung sistem pemesanan es krim online. Terdiri dari 11 tabel utama yang saling terhubung.
 
 ---
 
 ## 📄 1. `users`
-
-Menyimpan data akun pelanggan dan admin.
-
-| Kolom        | Tipe Data  | Keterangan                  |
-|--------------|------------|-----------------------------|
-| id_user      | INT (PK)   | ID unik pengguna            |
-| nama         | VARCHAR    | Nama lengkap                |
-| email        | VARCHAR    | Alamat email unik           |
-| password     | VARCHAR    | Password terenkripsi        |
-| role         | ENUM       | `admin` atau `pelanggan`    |
+Menyimpan data akun pengguna (admin dan pelanggan).
+| Kolom     | Tipe Data | Keterangan                |
+|-----------|-----------|---------------------------|
+| id_user   | INT (PK)  | ID unik pengguna          |
+| nama      | VARCHAR   | Nama lengkap              |
+| email     | VARCHAR   | Email unik                |
+| password  | VARCHAR   | Password terenkripsi      |
+| role      | ENUM      | 'admin' atau 'pelanggan'  |
 
 ---
 
 ## 📄 2. `produk`
-
 Menyimpan daftar produk es krim.
-
-| Kolom         | Tipe Data  | Keterangan                  |
-|---------------|------------|-----------------------------|
-| id_produk     | INT (PK)   | ID produk                   |
-| nama_produk   | VARCHAR    | Nama produk es krim         |
-| harga         | INT        | Harga produk                |
-| gambar        | VARCHAR    | Nama file gambar            |
-| id_kategori   | INT (FK)   | Kategori produk             |
+| Kolom        | Tipe Data | Keterangan         |
+|--------------|-----------|--------------------|
+| id_produk    | INT (PK)  | ID produk          |
+| nama_produk  | VARCHAR   | Nama produk        |
+| harga        | INT       | Harga satuan       |
+| gambar       | VARCHAR   | Gambar produk      |
+| id_kategori  | INT (FK)  | Kategori produk    |
 
 ---
 
 ## 📄 3. `kategori`
-
-Kategori atau jenis produk es krim.
-
-| Kolom         | Tipe Data  | Keterangan           |
-|---------------|------------|----------------------|
-| id_kategori   | INT (PK)   | ID kategori          |
-| nama_kategori | VARCHAR    | Nama kategori produk |
+Kategori produk es krim.
+| Kolom         | Tipe Data | Keterangan          |
+|---------------|-----------|---------------------|
+| id_kategori   | INT (PK)  | ID kategori         |
+| nama_kategori | VARCHAR   | Nama kategori       |
 
 ---
 
 ## 📄 4. `keranjang`
-
-Data belanja pelanggan sebelum checkout.
-
-| Kolom         | Tipe Data  | Keterangan                   |
-|---------------|------------|------------------------------|
-| id_keranjang  | INT (PK)   | ID item keranjang            |
-| id_user       | INT (FK)   | Pelanggan                    |
-| id_produk     | INT (FK)   | Produk                       |
-| jumlah        | INT        | Jumlah barang                |
+Data belanja sebelum checkout.
+| Kolom         | Tipe Data | Keterangan          |
+|---------------|-----------|---------------------|
+| id_keranjang  | INT (PK)  | ID item keranjang   |
+| id_user       | INT (FK)  | Pelanggan           |
+| id_produk     | INT (FK)  | Produk              |
+| jumlah        | INT       | Jumlah dibeli       |
 
 ---
 
 ## 📄 5. `checkout`
-
-Data pemesanan setelah pelanggan melakukan checkout.
-
-| Kolom             | Tipe Data  | Keterangan                            |
-|-------------------|------------|---------------------------------------|
-| id_checkout       | INT (PK)   | ID checkout                           |
-| id_user           | INT (FK)   | Pelanggan                             |
-| id_produk         | INT (FK)   | Produk yang dibeli                    |
-| jumlah            | INT        | Jumlah produk                         |
-| total             | INT        | Total harga (harga * jumlah)          |
-| alamat            | TEXT       | Alamat pengiriman                     |
-| tanggal_kirim     | DATE       | Tanggal pengiriman                    |
-| metode_pembayaran | ENUM       | COD / Transfer / QRIS                 |
-| status            | ENUM       | Menunggu / Lunas / Dibatalkan         |
-| tanggal_checkout  | DATETIME   | Waktu pesanan dibuat                  |
+Data pesanan setelah checkout.
+| Kolom             | Tipe Data | Keterangan                     |
+|-------------------|-----------|--------------------------------|
+| id_checkout       | INT (PK)  | ID pesanan                     |
+| id_user           | INT (FK)  | Pelanggan                      |
+| id_produk         | INT (FK)  | Produk yang dibeli             |
+| jumlah            | INT       | Jumlah beli                    |
+| total             | INT       | Total bayar                    |
+| alamat            | TEXT      | Alamat pengiriman              |
+| tanggal_kirim     | DATE      | Tanggal pengiriman             |
+| metode_pembayaran | ENUM      | COD / Transfer / QRIS          |
+| status            | ENUM      | Menunggu / Lunas / Batal       |
+| tanggal_checkout  | DATETIME  | Tanggal pemesanan dibuat       |
 
 ---
 
 ## 📄 6. `pengiriman`
-
-Log pengiriman pesanan ke pelanggan.
-
-| Kolom             | Tipe Data  | Keterangan                     |
-|-------------------|------------|--------------------------------|
-| id_pengiriman     | INT (PK)   | ID pengiriman                  |
-| id_checkout       | INT (FK)   | ID pesanan                     |
-| kurir             | VARCHAR    | Nama kurir                     |
-| status_pengiriman | ENUM       | Dalam Proses / Dikirim / Selesai |
-| waktu_kirim       | DATETIME   | Waktu pengiriman dilakukan     |
+Status pengiriman pesanan.
+| Kolom             | Tipe Data | Keterangan                    |
+|-------------------|-----------|-------------------------------|
+| id_pengiriman     | INT (PK)  | ID pengiriman                 |
+| id_checkout       | INT (FK)  | ID pesanan                    |
+| kurir             | VARCHAR   | Nama kurir                    |
+| status_pengiriman | ENUM      | Dalam Proses / Dikirim / Selesai |
+| waktu_kirim       | DATETIME  | Tanggal pengiriman            |
 
 ---
 
 ## 📄 7. `pembayaran`
-
-Menyimpan bukti transfer untuk metode non-COD.
-
-| Kolom            | Tipe Data  | Keterangan                      |
-|------------------|------------|---------------------------------|
-| id_pembayaran    | INT (PK)   | ID pembayaran                   |
-| id_checkout      | INT (FK)   | ID pesanan                      |
-| bukti            | VARCHAR    | File bukti pembayaran (gambar) |
-| status_verifikasi| ENUM       | Terverifikasi / Belum           |
+Data bukti pembayaran.
+| Kolom             | Tipe Data | Keterangan                     |
+|-------------------|-----------|--------------------------------|
+| id_pembayaran     | INT (PK)  | ID pembayaran                  |
+| id_checkout       | INT (FK)  | ID pesanan                     |
+| bukti             | VARCHAR   | Nama file bukti transfer       |
+| status_verifikasi | ENUM      | Terverifikasi / Belum          |
 
 ---
 
 ## 📄 8. `testimoni`
+Testimoni pelanggan terhadap produk.
+| Kolom        | Tipe Data | Keterangan                |
+|--------------|-----------|---------------------------|
+| id_testimoni | INT (PK)  | ID testimoni              |
+| id_user      | INT (FK)  | Pelanggan                 |
+| id_produk    | INT (FK)  | Produk                    |
+| pesan        | TEXT      | Isi testimoni             |
+| tanggal      | DATE      | Tanggal ditulis           |
 
-Testimoni pelanggan terhadap produk es krim.
+---
 
-| Kolom        | Tipe Data  | Keterangan                       |
-|--------------|------------|----------------------------------|
-| id_testimoni | INT (PK)   | ID testimoni                     |
-| id_user      | INT (FK)   | Pelanggan                        |
-| id_produk    | INT (FK)   | Produk                           |
-| pesan        | TEXT       | Isi testimoni                    |
-| tanggal      | DATE       | Tanggal penulisan testimoni      |
+## 📄 9. `transaksi`
+Ringkasan semua transaksi.
+| Kolom         | Tipe Data | Keterangan                |
+|---------------|-----------|---------------------------|
+| id_transaksi  | INT (PK)  | ID transaksi              |
+| id_user       | INT (FK)  | Pelanggan                 |
+| total_bayar   | INT       | Total semua belanja       |
+| tanggal       | DATETIME  | Waktu transaksi           |
+
+---
+
+## 📄 10. `detail_transaksi`
+Produk-produk yang dibeli dalam transaksi.
+| Kolom            | Tipe Data | Keterangan              |
+|------------------|-----------|-------------------------|
+| id_detail        | INT (PK)  | ID detail               |
+| id_transaksi     | INT (FK)  | ID transaksi            |
+| id_produk        | INT (FK)  | Produk yang dibeli      |
+| jumlah           | INT       | Jumlah produk           |
+| subtotal         | INT       | Harga * jumlah          |
+
+---
+
+## 📄 11. `kontak`
+Pesan dari pelanggan (halaman hubungi kami).
+| Kolom      | Tipe Data | Keterangan            |
+|------------|-----------|-----------------------|
+| id_kontak  | INT (PK)  | ID kontak             |
+| nama       | VARCHAR   | Nama pengirim         |
+| email      | VARCHAR   | Email                 |
+| pesan      | TEXT      | Isi pesan             |
+| tanggal    | DATETIME  | Tanggal pengiriman    |
 
 ---
 
 ## 🔁 Relasi Antar Tabel
 
-- 1 user → banyak checkout (1:N)
-- 1 user → banyak item keranjang (1:N)
-- 1 produk → banyak testimoni (1:N)
-- 1 checkout → 1 pengiriman (1:1)
-- 1 checkout → 1 pembayaran (1:1)
-- 1 kategori → banyak produk (1:N)
-
----
-
-> Struktur ini mendukung sistem transaksi dan pengalaman pelanggan yang efisien pada aplikasi pemesanan es krim Azta Es Cream.
-
-
+- `users` → banyak `checkout`, `keranjang`, `testimoni`, `transaksi`
+- `checkout` → satu `pengiriman` dan satu `pembayaran`
+- `produk` → banyak `keranjang`, `checkout`, `testimoni`, `detail_transaksi`
+- `transaksi` → banyak `detail_transaksi`
 ---
 
 ## 📄 Dokumentasi Tambahan
@@ -282,6 +283,17 @@ Testimoni pelanggan terhadap produk es krim.
 - 🎥 Video penjelasan: link YouTube telah disediakan
 - 📸 Screenshot UI: disertakan dalam laporan atau dokumentasi
 
+---
+
+## 🎓 Identitas Mahasiswa
+
+```yaml
+Nama    : Siti Vidi Maulidiyah Sari Anas
+NIM     : 202312009
+Proyek  : UAS Pemrograman Web
+Kelas   : Teknik Informatika – Pagi
+Dosen   : Ir. Abadi Nugroho. S,KOM.,M.KOM
+```
 ---
 
 ## 📢 Lisensi
