@@ -284,7 +284,6 @@ Pesan dari pelanggan (halaman hubungi kami).
 
 - 🧩 Database SQL: tersedia di folder `sql/azta_ice_cream.sql`
 - 🎥 Video penjelasan: link YouTube telah disediakan
-- 📸 Screenshot UI: disertakan dalam laporan atau dokumentasi
 
 ---
 

@@ -1,81 +1,107 @@
-# 📦 Panduan Instalasi TirtoPesal
+# 📦 Panduan Instalasi Azta Es Cream
 
-Berikut langkah-langkah detail untuk menjalankan aplikasi pemesanan travel **TirtoPesal** di server lokal.
+Berikut langkah-langkah detail untuk menjalankan aplikasi pemesanan es krim **Azta Es Cream** di server lokal (XAMPP/Laragon).
 
 ---
 
 ## 1. Clone atau Unduh Project
 
 ```bash
-git https://github.com/pesal21/Project_UAS_PemrogramanWeb_202312013.git
+git clone https://github.com/[username]/AztaEsCream.git
 
-Atau unduh ZIP dan ekstrak ke:
-- htdocs (XAMPP) atau
-- www (Laragon)
+
+
+Unduh file ZIP, lalu ekstrak ke folder:
+- htdocs (untuk XAMPP)
+- www (untuk Laragon)
 ```
+
+---
 
 ## 2. Buat Database dan Import
 
 ```bash
-- Buka http://localhost/phpmyadmin
-- Buat database baru: tirtopesal
-- Klik Import, pilih file:
-            /sql/tirtopesal.sql
+1. Buka browser: http://localhost/phpmyadmin
+2. Buat database baru: azta_es_cream
+3. Klik tab Import → Pilih file: /sql/azta_es_cream.sql
+4. Klik Go
 ```
 
+---
+
 ## 3. Konfigurasi Koneksi Database
-Edit file ini:
-```bash
-/src/includes/koneksi.php
+
+Edit file berikut:
+
+```php
+/config/koneksi.php
 ```
-Lalu sesuaikan kredensial:
+
+Ganti sesuai environment:
+
 ```php
 $host = "localhost";
 $user = "root";
-$pass = "pesal";  // ganti jika tidak kosong
-$db   = "tirtopesal";
+$pass = "";           // isi password jika 
+$db   = "azta_es_cream";
 ```
 
+---
+
 ## 4. Jalankan Aplikasi
-Buka browser:
+
+Buka browser dan akses:
+
 ```bash
-http://localhost/tirtopesal/src/
+http://localhost/AztaEsCream/index.php
 ```
+
+Atau langsung ke halaman login pelanggan:
+
+```bash
+http://localhost/AztaEsCream/login_pelanggan.php
+```
+
+---
 
 ## 5. Akun Default
 
-|   Role    | Username | Password |
-|-----------|----------|----------|
-|   Admin   |  pesal   | admin123 |
-| Pelanggan |  wenka   | wenka123 |
+|   Role    | Username       | Password     |
+|-----------|----------------|--------------|
+| Admin     | admin@azta.com | admin123     |
+| Pelanggan | vidi@mail.com  | 123456       |
 
-## 6. Fitur Khusus
+---
+
+## 6. Fitur Utama
 
 ```bash
-- Sistem pembayaran mendukung:
--- Cash
--- Transfer / QRIS (upload bukti)
-- Fitur cetak tiket otomatis
-- Ulasan dari pelanggan
-- Log aktivitas pengguna
-- Dark mode dengan Bootstrap 5
+✓ Login pelanggan & admin
+✓ Checkout dengan tanggal, alamat, dan metode pembayaran
+✓ Keranjang belanja
+✓ Riwayat transaksi dan nota cetak
+✓ Modul testimoni produk
+✓ CRUD admin: produk, user, pengiriman, pembayaran, dll
+✓ Tampilan modern dengan Bootstrap 5
 ```
+
+---
 
 ## 7. Troubleshooting
 
 ```bash
-- Jika halaman kosong → cek koneksi database
-- Jika error upload → pastikan folder /uploads memiliki izin tulis (CHMOD 755)
-- Untuk PDF Export: Tambahkan ekstensi dompdf jika ingin fitur ekspor (opsional)
+• Halaman putih? → Cek error_log atau aktifkan display_errors di php.ini
+• Gambar tidak muncul? → Pastikan file gambar ada di folder /assets/img
+• Keranjang tidak menyimpan? → Periksa session_start() di awal file PHP
+• SQL error (misal: "Unknown column") → Pastikan struktur database sudah sesuai
 ```
+
+---
 
 ## 8. Kontak Developer
 
 ```yaml
-Nama    : Faizal Darmawan
-NIM     : 202312013
-Proyek  : UAS Pemrograman Web
-Kelas   : Teknik Informatika – Pagi
+Nama    : Siti Vidi Maulidiyah Sari Anas
+NIM     : 202312009
+Kelas   : Teknik Informatika Pagi
 ```
-
-
