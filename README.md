@@ -112,7 +112,7 @@ http://localhost/azta_ice_cream/index.php
 
 ## 🌐 Link Aplikasi & Video
 
-- 🔗 Hosting : https://aztaescream.my.id
+- 🔗 Hosting : azta-escream.my.id
 - 🎥 Video Presentasi (YouTube): 
 
 ---
